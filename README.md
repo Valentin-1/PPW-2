@@ -1,6 +1,6 @@
 # PPW-2
 
-## Project name: Online magazin de electrocasnice 
+## Project name: Recenzii pentru gadgeturi electronice
 ## Entities: 
 
 Products
