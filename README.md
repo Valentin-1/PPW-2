@@ -8,6 +8,7 @@ Products
 {
 -product_id: number(PK, autoincrement),
 -prod_name: string(required, min: 20: max: 100),
+-prod_image: varbinary(max),
 -description: string(required, min: 200: max: 500),
 -category_id: int(FK, required to category_id),
 -manufacturer_id: int(FK, required to manufacturer_id),
