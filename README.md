@@ -1,7 +1,7 @@
 # PPW-2
 
 ## Project name: Recenzii pentru gadgeturi electronice
-## Entities: 
+## Entities: https://app.diagrams.net/?src=about#G1Q2QBsoYFijeJAAm-gpfWIUKLxSOn_Lnc
 
 Products
 ```
