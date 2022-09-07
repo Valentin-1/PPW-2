@@ -41,6 +41,15 @@ Coments
 }
 ```
 
+Like
+```
+{
+-like_id: int(PK),
+-user_id: number(FK,  required to user_id),
+-coment_id: number(FK, required to coment_id)
+}
+```
+
 Manufacturers
 ```
 {
