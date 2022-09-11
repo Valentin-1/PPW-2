@@ -34,4 +34,4 @@ class CategoriesController{
     }
 }
 
-module.exports = new CountriesController()
+module.exports = new CategoriesController()

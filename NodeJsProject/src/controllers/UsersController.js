@@ -40,4 +40,4 @@ class UsersController{
     }
 }
 
-module.exports = new CountriesController()
+module.exports = new UsersController()

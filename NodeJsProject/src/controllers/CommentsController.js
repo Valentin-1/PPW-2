@@ -34,4 +34,4 @@ class CommentsController{
     }
 }
 
-module.exports = new CountriesController()
+module.exports = new CommentsController()

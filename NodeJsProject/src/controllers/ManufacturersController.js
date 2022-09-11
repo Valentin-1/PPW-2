@@ -1,4 +1,4 @@
-class CategoriesController{
+class ManufacturersController{
     getAll(request, response){
         return response.json([
             {
@@ -34,4 +34,4 @@ class CategoriesController{
     }
 }
 
-module.exports = new CountriesController()
+module.exports = new ManufacturersController()
