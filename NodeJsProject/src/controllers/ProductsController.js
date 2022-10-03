@@ -17,10 +17,10 @@ class ProductsController{
             {
                 product_id: 1,
                 product_name: "Xiaomi Mi A1",
-                product_image: null,
+                product_image: "Image",
                 description: "Informatie va fi mai pe urma",
-                category_id: 1,
-                manufacturer_id: 1,
+                category_id: 2,
+                manufacturer_id: 3,
             }
         ])
     }
