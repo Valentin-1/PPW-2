@@ -1,14 +1,16 @@
-const CountriesService = require('../services/CountriesService')
+const UsersService = require('../services/UsersService')
 
-class CountriesController{
+class UsersController{
     async getAll(request, response){
         try{
-            return await response.status(200).json(await CountriesService.getAll([
+            return await response.status(200).json(await UsersService.getAll([
                 'user_id',
                 'fname',
                 'lname',
+                'user_name',
                 'email',
-                'user_con'
+                'user_icon',
+                'price'
             ]))
         } catch(error){
             return await response.status(500).json(JSON.stringify(error))
@@ -17,9 +19,9 @@ class CountriesController{
 
     async getOne(request, response){
         try{
-            const country = await CountriesService.getOne(request.params.id)
-            if(country){
-                return response.status(200).json(country)
+            const user = await UsersService.getOne(request.params.id)
+            if(user){
+                return response.status(200).json(user)
             }
             return response.status(404).json()
         } catch(error){
@@ -29,7 +31,7 @@ class CountriesController{
 
     async create(request, response){
         try{
-            return response.status(200).json(await CountriesService.create(request.body));
+            return response.status(200).json(await UsersService.create(request.body));
         } catch(error){
             return response.status(400).json(JSON.stringify(error))
         }
@@ -37,9 +39,9 @@ class CountriesController{
 
     async update(request, response){
         try{
-            const existingCountry = await CountriesService.getOne(request.params.id)
-            if(existingCountry){
-                return response.status(200).json(await existingCountry.update(request.body));
+            const existingUser = await UsersService.getOne(request.params.id)
+            if(existingUser){
+                return response.status(200).json(await existingUser.update(request.body));
             }
             return response.status(404).json();
         } catch(error){
@@ -49,33 +51,11 @@ class CountriesController{
 
     async delete(request, response){
         try{
-            return response.status(200).json(await CountriesService.delete(request.params.id))
+            return response.status(200).json(await UsersService.delete(request.params.id))
         } catch(error){
             return response.status(400).json(JSON.stringify(error))
         }
     }
-
-    async getRegions(request, response){
-        try{
-            return response.status(200).json(await CountriesService.getRegions(
-                request.params.id, 
-                ['id', 'name', 'code']
-            ))
-        } catch(error){
-            return response.status(500).json(JSON.stringify(error))
-        }
-    }
-
-    async getLocations(request, response){
-        try{
-            return response.status(200).json(await CountriesService.getLocations(
-                request.params.id, 
-                ['id', 'name', 'regionId']
-            ))
-        } catch(error){
-            return response.status(500).json(JSON.stringify(error))
-        }
-    }
 }
 
-module.exports = new CountriesController()
+module.exports = new UsersController()

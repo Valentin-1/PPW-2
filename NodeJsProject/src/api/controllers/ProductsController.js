@@ -1,44 +1,60 @@
+const ProductsService = require('../services/ProductsService')
+
 class ProductsController{
-    getAll(request, response){
-        return response.json([
-            {
-                product_id: 1,
-                product_name: "Xiaomi Mi A1",
-                product_image: null,
-                description: "Informatie va fi mai pe urma",
-                category_id: 1,
-                manufacturer_id: 1,
+    async getAll(request, response){
+        try{
+            return await response.status(200).json(await ProductsService.getAll([
+                'product_id',
+                'category_id',
+                'manufacturer_id',
+                'product_name',
+                'product_image',
+                'description',
+                'price'
+            ]))
+        } catch(error){
+            return await response.status(500).json(JSON.stringify(error))
+        }
+    }
+
+    async getOne(request, response){
+        try{
+            const product = await ProductsService.getOne(request.params.id)
+            if(product){
+                return response.status(200).json(product)
             }
-        ])
+            return response.status(404).json()
+        } catch(error){
+            return response.status(500).json(JSON.stringify(error))
+        }
     }
 
-    getOne(request, response){
-        return response.json([
-            {
-                product_id: 1,
-                product_name: "Xiaomi Mi A1",
-                product_image: "Image",
-                description: "Informatie va fi mai pe urma",
-                category_id: 2,
-                manufacturer_id: 3,
+    async create(request, response){
+        try{
+            return response.status(200).json(await ProductsService.create(request.body));
+        } catch(error){
+            return response.status(400).json(JSON.stringify(error))
+        }
+    }
+
+    async update(request, response){
+        try{
+            const existingProduct = await ProductsService.getOne(request.params.id)
+            if(existingProduct){
+                return response.status(200).json(await existingProduct.update(request.body));
             }
-        ])
+            return response.status(404).json();
+        } catch(error){
+            return response.status(400).json(JSON.stringify(error))
+        }
     }
 
-    create(request, response){
-        const country = request.body;
-        country.id = 1; 
-        return response.json(country);
-    }
-
-    update(request, response){
-        const country = request.body;
-        country.id = request.params.id;
-        return response.json(country);
-    }
-
-    delete(request, response){
-        return response.json({});
+    async delete(request, response){
+        try{
+            return response.status(200).json(await ProductsService.delete(request.params.id))
+        } catch(error){
+            return response.status(400).json(JSON.stringify(error))
+        }
     }
 }
 
