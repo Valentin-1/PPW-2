@@ -3,19 +3,19 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Category extends Model {
         static associate(models) {
-            Category.hasMany(models.Product)
+            Category.hasMany(models.Product, { sourceKey: 'category_id',  foreignKey: 'categoryId' })
             
         }
     }
     Category.init(
         {
             category_id: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
               },
               category_name: {
-                type: Sequelize.STRING(50),
+                type: DataTypes.STRING(50),
               },
         },
         {

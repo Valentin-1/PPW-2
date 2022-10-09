@@ -5,18 +5,18 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             Comment.belongsTo(models.Product)
             Comment.belongsTo(models.User)
-            Comment.hasOne(models.Like)
+            Like.belongsTo(models.Comment)
         }
     }
     Comment.init(
         {
             comment_id: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
               },
               user_id: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.INTEGER,
                 foreignKey: true,
               },
         },

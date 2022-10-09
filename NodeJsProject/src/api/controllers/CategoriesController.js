@@ -1,9 +1,9 @@
 const CategoriesService = require('../services/CategoriesService')
 
-class CountriesController{
+class CategoriesController{
     async getAll(request, response){
         try{
-            return await response.status(200).json(await Cate.getAll([
+            return await response.status(200).json(await CategoriesService.getAll([
                 'category_id',
                 'category_name',
             ]))

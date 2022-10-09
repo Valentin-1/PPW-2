@@ -3,18 +3,18 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Manufacturer extends Model {
         static associate(models) {
-            Manufacturer.hasOne(models.Product)
+            Manufacturer.hasOne(models.Product, {sourceKey: manufacturer_id, foreignKey: manufacturerId})
         }
     }
     Manufacturer.init(
         {
             manufacturer_id: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
               },
               manufacturer_name: {
-                type: Sequelize.STRING(50),
+                type: DataTypes.STRING(50),
               },
         },
         {
