@@ -1,29 +1,29 @@
 const Category = require('../models').Category
 
-class RegionsRepository {
+class CategoriesRepository {
     async getAll(fields = undefined) {
         return await Category.findAll({attributes: fields})
     }
 
-    async getOne(id) {
-        return await Category.findByPk(id)
+    async getOne(category_id) {
+        return await Category.findByPk(category_id)
     }
 
     async create(category) {
-        return await Region.create(Category)
+        return await Category.create(category)
     }
 
-    async update(id, category) {
-        const existingCategory = await Category.findByPk(id)
+    async update(category_id, category) {
+        const existingCategory = await Category.findByPk(category_id)
         if (existingCategory) {
             return await existingCategory.update(category);
         }
         return null;
     }
 
-    async delete(id) {
+    async delete(category_id) {
         const deletedCategory = await Category.destroy({
-            where: { id: id }
+            where: { category_id: category_id }
         })
         if (deletedCategory) {
             return {};
@@ -31,12 +31,12 @@ class RegionsRepository {
         return null;
     }
 
-    async getAllOfCountry(country_id, fields = undefined) {
+    async getAllOfCountry(category_id, fields = undefined) {
         return await Category.findAll({
-            where: { country_id: country_id },
+            where: { category_id: category_id },
             attributes: fields
         })
     }
 }
 
-module.exports = new RegionsRepository()
+module.exports = new CategoriesRepository()

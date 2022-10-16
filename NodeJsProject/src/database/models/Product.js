@@ -3,8 +3,8 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Product extends Model {
         static associate(models) {
-          Product.belongsTo(models.Category, {foreignKey: 'categoryId'})
-          Product.belongsTo(models.Manufacturer, {foreignKey: 'manufacturerId'})
+          Product.belongsTo(models.Category, {foreignKey:'category_id'})
+          Product.belongsTo(models.Manufacturer, {foreignKey: 'manufacturer_id'})
         }
     }
     Product.init(
@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
+              },
+              category_id: {
+                type: DataTypes.INTEGER
+              },
+              manufacturer_id: {
+                type: DataTypes.INTEGER
               },
               product_name: {
                 type: DataTypes.STRING(50),

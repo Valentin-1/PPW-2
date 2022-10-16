@@ -11,24 +11,20 @@ module.exports = {
       category_id:
       {
         allowNull: false,
-        foreignKey: true,
         type: Sequelize.INTEGER
       },
       manufacturer_id:
       {
         allowNull: false,
-        foreignKey: true,
         type: Sequelize.INTEGER
       },
       product_name: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
       },
       product_image: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
       },
       description: {
         type: Sequelize.STRING(200),

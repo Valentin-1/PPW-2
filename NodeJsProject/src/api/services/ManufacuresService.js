@@ -13,10 +13,10 @@ class ManufacuresService {
         return await ManufacturesRepository.create(manufacturer)
     }
 
-    async update(id, category) {
-        const existingCategory = await Category.findByPk(id)
-        if (existingCategory) {
-            return await existingCategory.update(category);
+    async update(id, manufacturer) {
+        const existingManufacturer = await Manufacturer.findByPk(id)
+        if (existingManufacturer) {
+            return await existingManufacturer.update(manufacturer);
         }
         return null;
     }

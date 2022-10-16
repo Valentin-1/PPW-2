@@ -5,25 +5,25 @@ class RegionsRepository {
         return await Comment.findAll({attributes: fields})
     }
 
-    async getOne(id) {
-        return await Comment.findByPk(id)
+    async getOne(comment_id) {
+        return await Comment.findByPk(comment_id)
     }
 
     async create(comment) {
         return await Comment.create(comment)
     }
 
-    async update(id, comment) {
-        const existingComment = await Comment.findByPk(id)
+    async update(comment_id, comment) {
+        const existingComment = await Comment.findByPk(comment_id)
         if (existingComment) {
             return await existingComment.update(comment);
         }
         return null;
     }
 
-    async delete(id) {
+    async delete(comment_id) {
         const deletedComment = await Comment.destroy({
-            where: { id: id }
+            where: { comment_id: comment_id }
         })
         if (deletedComment) {
             return {};

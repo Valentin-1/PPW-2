@@ -5,25 +5,25 @@ class CountriesRepository {
         return await User.findAll({attributes: fields})
     }
 
-    async getOne(id) {
-        return await User.findByPk(id)
+    async getOne(user_id) {
+        return await User.findByPk(user_id)
     }
 
     async create(user) {
         return await User.create(user)
     }
 
-    async update(id, User) {
-        const existingUser = await User.findByPk(id)
+    async update(user_id, User) {
+        const existingUser = await User.findByPk(user_id)
         if (existingUser) {
             return await existingUser.update(user);
         }
         return null;
     }
 
-    async delete(id) {
+    async delete(user_id) {
         return await User.destroy({
-            where: { id: id }
+            where: { user_id: user_id }
         })
     }
 

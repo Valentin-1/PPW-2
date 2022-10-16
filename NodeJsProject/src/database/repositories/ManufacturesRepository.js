@@ -1,29 +1,29 @@
 const Manufacturer = require('../models').Manufacturer
 
-class RegionsRepository {
+class ManufacturesRepository {
     async getAll(fields = undefined) {
         return await Manufacturer.findAll({attributes: fields})
     }
 
-    async getOne(id) {
-        return await Manufacturer.findByPk(id)
+    async getOne(manufacturer_id) {
+        return await Manufacturer.findByPk(manufacturer_id)
     }
 
     async create(manufacturer) {
-        return await Manufacturer.create(Manufacturer)
+        return await Manufacturer.create(manufacturer)
     }
 
-    async update(id, manufacturer) {
-        const existingManufacturer = await Manufacturer.findByPk(id)
+    async update(manufacturer_id, manufacturer) {
+        const existingManufacturer = await Manufacturer.findByPk(manufacturer_id)
         if (existingManufacturer) {
             return await existingManufacturer.update(manufacturer);
         }
         return null;
     }
 
-    async delete(id) {
+    async delete(manufacturer_id) {
         const deletedManufacturer = await Manufacturer.destroy({
-            where: { id: id }
+            where: { manufacturer_id: manufacturer_id }
         })
         if (deletedManufacturer) {
             return {};
@@ -31,12 +31,12 @@ class RegionsRepository {
         return null;
     }
 
-    async getAllOfCountry(countryId, fields = undefined) {
+    async getAllOfCountry(manufacturer_id, fields = undefined) {
         return await Manufacturer.findAll({
-            where: { country_id: country_id },
+            where: { manufacturer_id: manufacturer_id },
             attributes: fields
         })
     }
 }
 
-module.exports = new RegionsRepository()
+module.exports = new ManufacturesRepository()

@@ -5,25 +5,25 @@ class RegionsRepository {
         return await Like.findAll({attributes: fields})
     }
 
-    async getOne(id) {
-        return await Like.findByPk(id)
+    async getOne(like_id) {
+        return await Like.findByPk(like_id)
     }
 
     async create(like) {
-        return await Region.create(Like)
+        return await Region.create(like)
     }
 
-    async update(id, like) {
-        const existingLike = await Like.findByPk(id)
+    async update(like_id, like) {
+        const existingLike = await Like.findByPk(like_id)
         if (existingLike) {
             return await existingLike.update(like);
         }
         return null;
     }
 
-    async delete(id) {
+    async delete(like_id) {
         const deletedLike = await Like.destroy({
-            where: { id: id }
+            where: { like_id: like_id }
         })
         if (deletedLike) {
             return {};

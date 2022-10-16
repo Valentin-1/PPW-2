@@ -1,6 +1,6 @@
 const ManufacuresService = require('../services/ManufacuresService')
 
-class LocationsController{
+class ManufacturersController{
     async getAll(request, response){
         try{
             return await response.status(200).json(await ManufacuresService.getAll([
@@ -53,4 +53,4 @@ class LocationsController{
     }
 }
 
-module.exports = new LocationsController()
+module.exports = new ManufacturersController()

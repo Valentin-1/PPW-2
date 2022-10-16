@@ -12,13 +12,11 @@ module.exports = {
       {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
       },
       lname:
       {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
       },
       user_name: {
         type: Sequelize.STRING(50),
@@ -32,7 +30,6 @@ module.exports = {
       user_icon: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true
       },
       createdAt: {
         allowNull: false,

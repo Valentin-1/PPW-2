@@ -10,7 +10,6 @@ class UsersController{
                 'user_name',
                 'email',
                 'user_icon',
-                'price'
             ]))
         } catch(error){
             return await response.status(500).json(JSON.stringify(error))

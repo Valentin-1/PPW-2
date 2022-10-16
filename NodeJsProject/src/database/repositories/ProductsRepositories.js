@@ -1,29 +1,29 @@
 const Product = require('../models').Product
 
-class CountriesRepository {
+class ProductsRepositories {
     async getAll(fields = undefined) {
         return await Product.findAll({attributes: fields})
     }
 
-    async getOne(id) {
-        return await Product.findByPk(id)
+    async getOne(product_id) {
+        return await Product.findByPk(product_id)
     }
 
     async create(product) {
         return await Product.create(product)
     }
 
-    async update(id, product) {
-        const existingProduct = await Product.findByPk(id)
+    async update(product_id, product) {
+        const existingProduct = await Product.findByPk(product_id)
         if (existingProduct) {
             return await existingProduct.update(product);
         }
         return null;
     }
 
-    async delete(id) {
+    async delete(product_id) {
         return await Product.destroy({
-            where: { id: id }
+            where: { product_id: product_id }
         })
     }
 
@@ -35,4 +35,4 @@ class CountriesRepository {
     }
 }
 
-module.exports = new CountriesRepository()
+module.exports = new ProductsRepositories()

@@ -1,6 +1,6 @@
 const CommentsSerice = require('../services/CommentsSerice')
 
-class LocationsController{
+class CommentsController{
     async getAll(request, response){
         try{
             return await response.status(200).json(await CommentsSerice.getAll([
@@ -55,4 +55,4 @@ class LocationsController{
     }
 }
 
-module.exports = new LocationsController()
+module.exports = new CommentsController()

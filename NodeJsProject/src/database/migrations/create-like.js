@@ -10,13 +10,11 @@ module.exports = {
       },
       user_id: {
         allowNull: false,
-        foreignKey: true,
         type: Sequelize.INTEGER
       },
       comment_id:
       {
         allowNull: false,
-        foreignKey: true,
         type: Sequelize.INTEGER
       },
       createdAt: {
